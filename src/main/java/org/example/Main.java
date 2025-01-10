@@ -17,19 +17,25 @@ public class Main {
 
         // Construimos un objeto de tipo User
         User user1 = new User();
-        user1.setId(1);
+//        user1.setId(1);
         user1.setUserName("Pepe");
         user1.setUserMessage("Hello world from JPA with Pepe");
 
         // Construimos otro objeto de tipo User
         User user2 = new User();
-        user2.setId(2);
+//        user2.setId(2);
         user2.setUserName("Juan");
         user2.setUserMessage("Hello world from JPA with Juan");
+
+        User user3 = new User();
+        user3.setUserName("Javier");
+        user3.setUserMessage("Hello world from JPA with Javier");
 
         //Persistimos los objetos
         em.persist(user1);
         em.persist(user2);
+        em.remove(user2);
+        em.persist(user3);
 
         //Commiteamos la transacción
         em.getTransaction().commit();
