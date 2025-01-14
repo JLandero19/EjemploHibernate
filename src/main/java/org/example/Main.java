@@ -27,15 +27,17 @@ public class Main {
         user2.setUserName("Juan");
         user2.setUserMessage("Hello world from JPA with Juan");
 
-        User user3 = new User();
-        user3.setUserName("Javier");
-        user3.setUserMessage("Hello world from JPA with Javier");
+        Phone phone1 = new Phone();
+        phone1.setNumber("123456789");
+        // Esto sería para ManyToOne
+//        phone1.setUser(user1);
+        user1.getPhone().add(phone1);
 
         //Persistimos los objetos
         em.persist(user1);
         em.persist(user2);
-        em.remove(user2);
-        em.persist(user3);
+
+//        em.persist(phone1);
 
         //Commiteamos la transacción
         em.getTransaction().commit();
