@@ -1,4 +1,4 @@
-package org.example.example2Relacion1_muchosBidireccional;
+package org.example;
 
 import javax.persistence.*;
 import java.util.ArrayList;

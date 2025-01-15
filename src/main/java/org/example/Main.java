@@ -1,4 +1,4 @@
-package org.example.example2Relacion1_muchosBidireccional;
+package org.example;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -29,13 +29,25 @@ public class Main {
         phone1.setNumber("123456789");
         user1.addPhone(phone1);
 
-        //Persistimos los objetos
+        PhoneDetails phoneDetails1 = new PhoneDetails();
+        phoneDetails1.setIMEI("prueba");
+
+        phone1.setPhoneDetails(phoneDetails1);
+
+        // Persistimos los objetos
         em.persist(user1);
         em.persist(user2);
 
-//        em.persist(phone1);
+        // Esto se hace si no se ha configurado el CASCADE
+        // em.persist(phoneDetails1);
 
-        //Commiteamos la transacción
+        // Esto se hace si no se ha configurado el CASCADE
+        // em.persist(phone1);
+
+        // Para buscar algo de una clase en concreto
+        System.out.println(em.find(Phone.class, 1L).getNumber());
+
+        // Comiteamos la transacción
         em.getTransaction().commit();
 
         //Cerramos el EntityManager

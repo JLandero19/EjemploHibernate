@@ -1,4 +1,4 @@
-package org.example.example2Relacion1_muchosBidireccional;
+package org.example;
 
 import javax.persistence.*;
 
@@ -15,6 +15,11 @@ public class Phone {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    // Relación de 1 a 1
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "details_id")
+    private PhoneDetails phoneDetails;
 
     public Phone() {}
 
@@ -45,5 +50,13 @@ public class Phone {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public PhoneDetails getPhoneDetails() {
+        return phoneDetails;
+    }
+
+    public void setPhoneDetails(PhoneDetails phoneDetails) {
+        this.phoneDetails = phoneDetails;
     }
 }
