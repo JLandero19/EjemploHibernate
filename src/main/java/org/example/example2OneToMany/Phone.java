@@ -1,4 +1,4 @@
-package org.example;
+package org.example.example2OneToMany;
 
 import javax.persistence.*;
 
@@ -12,17 +12,9 @@ public class Phone {
     @Column(nullable = false)
     private String number;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "USER_ID_FK"))
-//    private User user;
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Phone() {}
 
@@ -45,5 +37,13 @@ public class Phone {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

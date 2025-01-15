@@ -1,4 +1,4 @@
-package org.example;
+package org.example.example2OneToMany;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,8 +19,7 @@ public class User {
 
     // cascade = CascadeType.ALL -> Esto es para que se propague a sus hijos y no necesitas que los datos de los hijos se tengan que persistir
     // orphanRemoval = true -> esto indica que los hijos de un padre deben desaparecer cuando el padre sea eliminado
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "phone_id")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Phone> phone;
 
     public User() {
@@ -57,5 +56,15 @@ public class User {
 
     public void setUserMessage(String userMessage) {
         this.userMessage = userMessage;
+    }
+
+    public void addPhone(Phone phone) {
+        this.getPhone().add(phone);
+        phone.setUser(this);
+    }
+
+    public void removePhone(Phone phone) {
+        this.getPhone().remove(phone);
+        phone.setUser(null);
     }
 }

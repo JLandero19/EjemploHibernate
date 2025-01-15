@@ -1,4 +1,4 @@
-package org.example;
+package org.example.example2OneToMany;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,21 +17,17 @@ public class Main {
 
         // Construimos un objeto de tipo User
         User user1 = new User();
-//        user1.setId(1);
         user1.setUserName("Pepe");
         user1.setUserMessage("Hello world from JPA with Pepe");
 
         // Construimos otro objeto de tipo User
         User user2 = new User();
-//        user2.setId(2);
         user2.setUserName("Juan");
         user2.setUserMessage("Hello world from JPA with Juan");
 
         Phone phone1 = new Phone();
         phone1.setNumber("123456789");
-        // Esto sería para ManyToOne
-//        phone1.setUser(user1);
-        user1.getPhone().add(phone1);
+        user1.addPhone(phone1);
 
         //Persistimos los objetos
         em.persist(user1);
