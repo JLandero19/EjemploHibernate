@@ -1,4 +1,4 @@
-package org.example.example2OneToMany;
+package org.example.example2Relacion1_muchos;
 
 import javax.persistence.*;
 import java.util.ArrayList;
