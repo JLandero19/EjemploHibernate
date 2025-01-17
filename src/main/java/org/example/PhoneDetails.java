@@ -3,6 +3,7 @@ package org.example;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "phonedetails")
 public class PhoneDetails {
 
     @Id
@@ -11,6 +12,9 @@ public class PhoneDetails {
 
     @Column
     private String IMEI;
+
+    @OneToOne(mappedBy = "phoneDetails")
+    private Phone phone;
 
     public PhoneDetails() {}
 
@@ -28,5 +32,13 @@ public class PhoneDetails {
 
     public void setIMEI(String IMEI) {
         this.IMEI = IMEI;
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
     }
 }

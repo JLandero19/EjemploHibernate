@@ -3,16 +3,19 @@
     <persistence-unit name="MiUnidadDePersistencia" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Clases/Entidades que tiene manejar -->
-        <class>org.example.example2Relacion1_muchosBidireccional.User</class>
+        <class>org.example.User</class>
+        <class>org.example.Phone</class>
+        <class>org.example.PhoneDetails</class>
+        <class>org.example.Address</class>
         <properties>
             <!-- La configuración de la base de datos -->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mibasededatos"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="2dam"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
             <!-- La configuración de Hibernate -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <!-- Esto indica a Hibernate que tiene crear las tablas -->
