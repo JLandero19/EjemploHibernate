@@ -34,6 +34,13 @@ public class Main {
 
         phone1.setPhoneDetails(phoneDetails1);
 
+        Address address1 = new Address();
+        address1.setStreet("Prueba");
+        address1.setNumber(7);
+
+        // Está añadiendo una dirección al usuario
+        user1.addAddress(address1);
+
         // Persistimos los objetos
         em.persist(user1);
         em.persist(user2);
@@ -45,7 +52,7 @@ public class Main {
         // em.persist(phone1);
 
         // Para buscar algo de una clase en concreto
-        System.out.println(em.find(Phone.class, 1L).getNumber());
+        // System.out.println(em.find(Phone.class, 1L).getNumber());
 
         // Comiteamos la transacción
         em.getTransaction().commit();

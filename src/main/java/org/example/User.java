@@ -22,8 +22,17 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Phone> phone;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "user_live_address",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
+    private List<Address> addresses;
+
     public User() {
-        phone = new ArrayList<Phone>();
+        phone = new ArrayList<>();
+        addresses = new ArrayList<>();
     }
 
     public List<Phone> getPhone() {
@@ -32,6 +41,14 @@ public class User {
 
     public void setPhone(List<Phone> phone) {
         this.phone = phone;
+    }
+
+    public List<Address> getaddresses() {
+        return addresses;
+    }
+
+    public void setaddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public int getId() {
@@ -66,5 +83,15 @@ public class User {
     public void removePhone(Phone phone) {
         this.getPhone().remove(phone);
         phone.setUser(null);
+    }
+
+    public void addAddress(Address address) {
+        this.getaddresses().add(address);
+        address.getUser().add(this);
+    }
+
+    public void removeAddress(Address address) {
+        this.getaddresses().remove(address);
+        address.setUser(null);
     }
 }
