@@ -22,11 +22,13 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Phone> phone;
 
+    // @ManyToMany la utilizamos para las relaciones de muchos a muchos
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "user_live_address",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "address_id")
+            name = "user_live_address", // Configuramos el nombre de la tabla
+            // Estos campos hacen referencia a las claves que se van conectan a la tabla intermedia desde la tabla User y Address
+            joinColumns = @JoinColumn(name = "user_id"), // Configuramos la conexión del campo que hace referencia al JOIN
+            inverseJoinColumns = @JoinColumn(name = "address_id") // Configuramos la conexión del campo del inverso del JOIN
     )
     private List<Address> addresses;
 
